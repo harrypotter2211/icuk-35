@@ -6,6 +6,7 @@ MAINTAINER "valaxytech@gmail.com"
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy WAR into Tomcat
-COPY webapp.war /usr/local/tomcat/webapps/
+COPY target/webapp.war /usr/local/tomcat/webapps/
+
 
 EXPOSE 8080
