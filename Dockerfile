@@ -1,11 +1,11 @@
-FROM maven:3.8.6-openjdk-8 AS build
+# Use JDK-only image for runtime (smaller size)
+FROM eclipse-temurin:17-jdk
+
+# Create working directory
 WORKDIR /app
 
-COPY pom.xml ./pom.xml
-COPY server/pom.xml ./server/pom.xml
-COPY server/src ./server/src
+# Copy built JAR from the build stage
+COPY --from=build /app/target/*.jar app.jar
 
-RUN mvn -f server/pom.xml clean package -DskipTests
-
-FROM tomcat:8-jre8
-COPY --from=build /app/server/target/*.war /usr/local/tomcat/webapps/
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
