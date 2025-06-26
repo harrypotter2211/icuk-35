@@ -12,6 +12,8 @@
 
     <name>server</name>
     <description>A simple Java webapp</description>
+    
+    <!-- Make sure there is no <parent> element here -->
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
