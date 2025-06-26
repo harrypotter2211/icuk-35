@@ -8,7 +8,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run WAR in Tomcat
+# Stage 2: Use Tomcat to run the WAR
 FROM tomcat:8-jre8
 
 RUN rm -rf /usr/local/tomcat/webapps/*
